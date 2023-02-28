@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Foodie</string>
+    <string name="image_of_chicken">Image of Chicken</string>
+    <string name="discover_foods">Discover Foods</string>
+    <string name="search_foods">Search Foods</string>
+    <string name="categories">Categories</string>
+</resources>
