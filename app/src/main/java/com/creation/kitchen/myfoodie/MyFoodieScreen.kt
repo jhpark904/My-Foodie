@@ -4,12 +4,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.creation.kitchen.myfoodie.ui.DiscoverScreen
-import com.creation.kitchen.myfoodie.ui.HomeScreen
-import com.creation.kitchen.myfoodie.ui.SearchScree
+import com.creation.kitchen.myfoodie.ui.*
 
 enum class MyFoodieScreen {
     Home,
@@ -40,10 +39,14 @@ fun MyFoodieApp(modifier: Modifier = Modifier) {
             }
 
             composable(route = MyFoodieScreen.Discover.name) {
+                val discoverViewModel: DiscoverViewModel = viewModel()
+
                 DiscoverScreen(
-                    navigateToMeals = {
-                        navController.navigate(MyFoodieScreen.Meals.name)
-                    }
+                    viewModel = discoverViewModel,
+                    navigateToMeals = { category: String ->
+                        navController.navigate("${MyFoodieScreen.Meals.name}/${category}")
+                    },
+                    reloadAction = discoverViewModel::getCategories
                 )
             }
 
@@ -51,8 +54,17 @@ fun MyFoodieApp(modifier: Modifier = Modifier) {
                 SearchScree()
             }
 
-            composable(route = MyFoodieScreen.Meals.name) {
+            composable(route = "${MyFoodieScreen.Meals.name}/{category}") {
+                val category = it.arguments?.getString("category")
+                val mealsViewModel: MealsViewModel = viewModel()
 
+                MealsScreen(
+                    viewModel = mealsViewModel,
+                    category = category,
+                    navigateToMealDetails = { meal: String ->
+                    },
+                    reloadAction = mealsViewModel::getMeals
+                )
             }
         }
     }

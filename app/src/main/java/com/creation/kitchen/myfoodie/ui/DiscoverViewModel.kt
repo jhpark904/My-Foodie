@@ -9,6 +9,7 @@ import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface DiscoverUiState {
@@ -29,13 +30,15 @@ class DiscoverViewModel : ViewModel() {
         getCategories()
     }
 
-    private fun getCategories() {
+    fun getCategories() {
         try {
             viewModelScope.launch {
                 val listResult = MyFoodieApi.retrofitService.getCategories().categories
                 _discoverUiState.value = DiscoverUiState.Success(listResult)
             }
         } catch (e: IOException) {
+            _discoverUiState.value = DiscoverUiState.Error
+        } catch (e: HttpException) {
             _discoverUiState.value = DiscoverUiState.Error
         }
     }
