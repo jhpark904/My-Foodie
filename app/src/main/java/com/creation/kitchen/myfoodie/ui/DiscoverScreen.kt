@@ -53,7 +53,8 @@ fun LoadedResult(
     ) {
         Text(
             stringResource(id = R.string.categories),
-            style = MaterialTheme.typography.subtitle1
+            style = MaterialTheme.typography.h5,
+            color = MaterialTheme.colors.primary
         )
 
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.d3)))
@@ -80,7 +81,7 @@ fun CategoryButton(
     Button(onClick = { navigateToMeals(category) }) {
         Text(
             text = category,
-            style = MaterialTheme.typography.button
+            style = MaterialTheme.typography.button,
         )
     }
 }
