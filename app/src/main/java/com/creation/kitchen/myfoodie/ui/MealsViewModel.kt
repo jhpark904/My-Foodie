@@ -12,14 +12,14 @@ import retrofit2.HttpException
 import java.io.IOException
 
 sealed interface MealsUiState {
-    data class Success(val meals: List<Meal>): MealsUiState
+    data class Success(val meals: List<Meal>) : MealsUiState
 
-    object Error: MealsUiState
+    object Error : MealsUiState
 
-    object Loading: MealsUiState
+    object Loading : MealsUiState
 }
 
-class MealsViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
+class MealsViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
     private val category = savedStateHandle.get<String>("category")
     private val _mealsUiState = MutableStateFlow<MealsUiState>(MealsUiState.Loading)
@@ -29,19 +29,18 @@ class MealsViewModel(savedStateHandle: SavedStateHandle): ViewModel() {
         getMeals()
     }
 
-     fun getMeals() {
-        try {
-            viewModelScope.launch {
+    fun getMeals() {
+        viewModelScope.launch {
+            try {
                 category?.let {
                     val listResult = MyFoodieApi.retrofitService.getMealsList(it).meals
                     _mealsUiState.value = MealsUiState.Success(listResult)
                 }
+            } catch (e: IOException) {
+                _mealsUiState.value = MealsUiState.Error
+            } catch (e: HttpException) {
+                _mealsUiState.value = MealsUiState.Error
             }
-        } catch (e: IOException) {
-            _mealsUiState.value = MealsUiState.Error
-        } catch (e: HttpException) {
-            _mealsUiState.value = MealsUiState.Error
         }
     }
-
 }

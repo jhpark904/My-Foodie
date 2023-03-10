@@ -113,7 +113,7 @@ fun MealRow(
             Text(
                 name,
                 style = MaterialTheme.typography.body1,
-                color = MaterialTheme.colors.secondary
+                color = MaterialTheme.colors.primary
             )
         }
     }

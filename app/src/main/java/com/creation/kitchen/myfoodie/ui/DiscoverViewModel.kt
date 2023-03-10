@@ -14,11 +14,11 @@ import java.io.IOException
 
 sealed interface DiscoverUiState {
 
-    data class Success(val filters: List<Category>): DiscoverUiState
+    data class Success(val filters: List<Category>) : DiscoverUiState
 
-    object Error: DiscoverUiState
+    object Error : DiscoverUiState
 
-    object Loading: DiscoverUiState
+    object Loading : DiscoverUiState
 }
 
 class DiscoverViewModel : ViewModel() {
@@ -31,15 +31,15 @@ class DiscoverViewModel : ViewModel() {
     }
 
     fun getCategories() {
-        try {
-            viewModelScope.launch {
+        viewModelScope.launch {
+            try {
                 val listResult = MyFoodieApi.retrofitService.getCategories().categories
                 _discoverUiState.value = DiscoverUiState.Success(listResult)
+            } catch (e: IOException) {
+                _discoverUiState.value = DiscoverUiState.Error
+            } catch (e: HttpException) {
+                _discoverUiState.value = DiscoverUiState.Error
             }
-        } catch (e: IOException) {
-            _discoverUiState.value = DiscoverUiState.Error
-        } catch (e: HttpException) {
-            _discoverUiState.value = DiscoverUiState.Error
         }
     }
 }

@@ -14,7 +14,8 @@ enum class MyFoodieScreen {
     Home,
     Discover,
     Search,
-    Meals
+    Meals,
+    MealDetails
 }
 
 @Composable
@@ -61,9 +62,18 @@ fun MyFoodieApp(modifier: Modifier = Modifier) {
                 MealsScreen(
                     viewModel = mealsViewModel,
                     category = category,
-                    navigateToMealDetails = { meal: String ->
+                    navigateToMealDetails = { mealId: String ->
+                        navController.navigate("${MyFoodieScreen.MealDetails.name}/${mealId}")
                     },
                     reloadAction = mealsViewModel::getMeals
+                )
+            }
+
+            composable(route = "${MyFoodieScreen.MealDetails.name}/{mealId}") {
+                val mealDetailsViewModel: MealDetailsViewModel = viewModel()
+                MealDetailsScreen(
+                    viewModel = mealDetailsViewModel,
+                    reloadAction = mealDetailsViewModel::getMealDetails
                 )
             }
         }
