@@ -9,5 +9,8 @@
     <string name="reload">Reload</string>
     <string name="error">Oops something went wrong...</string>
     <string name="instructions">Instructions</string>
-
+    <string name="back">back</string>
+    <string name="my_foods">My Foods</string>
+    <string name="meals">Meals</string>
+    <string name="meal_details">Meal Details</string>
 </resources>

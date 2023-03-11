@@ -3,6 +3,7 @@
     <dimen name="d1">8dp</dimen>
     <dimen name="d2">12dp</dimen>
     <dimen name="d3">16dp</dimen>
+    <dimen name="d5">24dp</dimen>
     <dimen name="d15">64dp</dimen>
     <dimen name="elevation">1dp</dimen>
 </resources>

@@ -54,7 +54,7 @@ fun LoadedResult(
 ) {
     Column(
         modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.d3))
+            .padding(dimensionResource(id = R.dimen.d5))
             .fillMaxSize()
     ) {
         category?.let {
@@ -92,9 +92,10 @@ fun MealRow(
         elevation = dimensionResource(id = R.dimen.elevation)
     ) {
         Row(
-            modifier = Modifier.padding(
-                dimensionResource(id = R.dimen.d2)
-            )
+            modifier = Modifier
+                .padding(
+                    dimensionResource(id = R.dimen.d2)
+                )
                 .fillMaxWidth()
                 .clickable {
                     navigateToMealDetails(id)

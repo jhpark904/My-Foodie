@@ -1,28 +1,75 @@
 package com.creation.kitchen.myfoodie
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.creation.kitchen.myfoodie.ui.*
 
-enum class MyFoodieScreen {
-    Home,
-    Discover,
-    Search,
-    Meals,
-    MealDetails
+enum class MyFoodieScreen(@StringRes val title: Int) {
+    Home(R.string.app_name),
+    Discover(R.string.discover_foods),
+    MyFood(R.string.my_foods),
+    Meals(R.string.meals),
+    MealDetails(R.string.meal_details)
 }
 
 @Composable
-fun MyFoodieApp(modifier: Modifier = Modifier) {
-    val navController = rememberNavController()
+fun MyFoodieAppTopBar(
+    currentScreen: MyFoodieScreen,
+    navigateUp: () -> Unit,
+    canNavigateBack: Boolean
+) {
+    TopAppBar(
+        title = { Text(stringResource(id = currentScreen.title)) },
+        navigationIcon = {
+            if (canNavigateBack) {
+                IconButton(onClick = navigateUp) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = stringResource(id = R.string.back)
+                    )
+                }
+            }
+        }
+    )
+}
 
-    Scaffold() {innerPadding ->
+@Composable
+fun MyFoodieApp(
+    navController: NavHostController = rememberNavController()
+) {
+    // Get current back stack entry
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val route = backStackEntry?.destination?.route
+        ?.replaceAfter("/", "")
+        ?.removeSuffix("/")
+
+    // Get the name of the current screen
+    val currentScreen = MyFoodieScreen.valueOf(
+        route ?: MyFoodieScreen.Home.name
+    )
+
+    Scaffold(
+        topBar = {
+            MyFoodieAppTopBar(
+                currentScreen = currentScreen,
+                canNavigateBack = navController.previousBackStackEntry != null,
+                navigateUp = { navController.navigateUp() }
+            )
+        }
+    ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = MyFoodieScreen.Home.name,
@@ -34,7 +81,7 @@ fun MyFoodieApp(modifier: Modifier = Modifier) {
                         navController.navigate(MyFoodieScreen.Discover.name)
                     },
                     onSearchClick = {
-                        navController.navigate(MyFoodieScreen.Search.name)
+                        navController.navigate(MyFoodieScreen.MyFood.name)
                     }
                 )
             }
@@ -51,7 +98,7 @@ fun MyFoodieApp(modifier: Modifier = Modifier) {
                 )
             }
 
-            composable(route = MyFoodieScreen.Search.name) {
+            composable(route = MyFoodieScreen.MyFood.name) {
                 SearchScree()
             }
 

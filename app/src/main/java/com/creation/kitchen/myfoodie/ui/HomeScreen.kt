@@ -2,12 +2,14 @@ package com.creation.kitchen.myfoodie.ui
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -23,17 +25,18 @@ fun HomeScreen(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
-            .padding(dimensionResource(id = R.dimen.d1))
+            .padding(dimensionResource(id = R.dimen.d5))
             .fillMaxSize()
     ) {
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.d3)))
 
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
+            painter = painterResource(id = R.drawable.food),
             contentDescription = stringResource(id = R.string.image_of_chicken),
+            modifier = modifier.clip(CircleShape)
         )
         
-        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.d1)))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.d3)))
         
         Button(
             onClick = onDiscoverClick,

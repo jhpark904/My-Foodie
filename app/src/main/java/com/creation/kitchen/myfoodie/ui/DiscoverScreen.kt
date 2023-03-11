@@ -48,8 +48,8 @@ fun LoadedResult(
 ) {
     Column(
         Modifier
+            .padding(dimensionResource(id = R.dimen.d5))
             .fillMaxSize()
-            .padding(dimensionResource(id = R.dimen.d3))
     ) {
         Text(
             stringResource(id = R.string.categories),

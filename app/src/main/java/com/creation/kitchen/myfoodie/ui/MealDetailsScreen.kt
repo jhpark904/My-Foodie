@@ -54,7 +54,7 @@ fun LoadedResult(
 ) {
     Column(
         modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.d3))
+            .padding(dimensionResource(id = R.dimen.d5))
             .fillMaxSize()
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,7 +75,7 @@ fun LoadedResult(
 
         Text(
             area,
-            style = MaterialTheme.typography.subtitle2,
+            style = MaterialTheme.typography.subtitle1,
             color = MaterialTheme.colors.primaryVariant
         )
 
@@ -83,13 +83,15 @@ fun LoadedResult(
 
         Text(
             text = stringResource(id = R.string.instructions),
-            style = MaterialTheme.typography.subtitle1,
+            style = MaterialTheme.typography.h6,
             color = MaterialTheme.colors.primary
         )
 
+        Spacer(modifier = Modifier.height(dimensionResource(id =R.dimen.d2)))
+
         Text(
             instruction,
-            style = MaterialTheme.typography.subtitle2,
+            style = MaterialTheme.typography.subtitle1,
             color = MaterialTheme.colors.primaryVariant
         )
     }
