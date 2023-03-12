@@ -13,4 +13,8 @@
     <string name="my_foods">My Foods</string>
     <string name="meals">Meals</string>
     <string name="meal_details">Meal Details</string>
+    <string name="save">Save</string>
+    <string name="remove">Remove</string>
+    <string name="save_meal">Saved the Meal!</string>
+    <string name="remove_meal">Removed the Meal!</string>
 </resources>

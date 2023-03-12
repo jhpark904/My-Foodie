@@ -6,6 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MealDetails(
+    @SerialName(value = "idMeal")
+    val id: String,
     @SerialName(value = "strMeal")
     val name: String,
     @SerialName(value = "strArea")

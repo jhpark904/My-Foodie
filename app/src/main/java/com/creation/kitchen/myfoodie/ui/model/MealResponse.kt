@@ -1,6 +1,5 @@
 package com.creation.kitchen.myfoodie.ui.model
 
-import kotlinx.serialization.SerialInfo
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
