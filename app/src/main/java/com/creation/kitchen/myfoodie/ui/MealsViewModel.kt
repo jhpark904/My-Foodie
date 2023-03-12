@@ -1,9 +1,7 @@
 package com.creation.kitchen.myfoodie.ui
 
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.*
 import androidx.lifecycle.viewmodel.CreationExtras
-import com.creation.kitchen.myfoodie.R
 import com.creation.kitchen.myfoodie.database.asMealList
 import com.creation.kitchen.myfoodie.database.getDatabase
 import com.creation.kitchen.myfoodie.network.MyFoodieApi

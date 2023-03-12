@@ -1,11 +1,9 @@
 package com.creation.kitchen.myfoodie.ui
 
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.creation.kitchen.myfoodie.network.MyFoodieApi
 import com.creation.kitchen.myfoodie.ui.model.Category
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
