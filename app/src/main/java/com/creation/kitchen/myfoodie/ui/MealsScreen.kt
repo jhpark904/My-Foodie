@@ -35,6 +35,14 @@ fun MealsScreen(
                 navigateToMealDetails = navigateToMealDetails
             )
         }
+
+        is MealsUiState.SuccessSaved -> {
+           LoadedResult(
+               category = category,
+               meals = state.meals.collectAsState(initial = emptyList()).value,
+               navigateToMealDetails = navigateToMealDetails
+           )
+        }
         
         is MealsUiState.Loading -> {
             LoadingScreen()
@@ -58,11 +66,19 @@ fun LoadedResult(
             .fillMaxSize()
     ) {
         category?.let {
-            Text(
-                stringResource(id = R.string.category, it),
-                style = MaterialTheme.typography.h5,
-                color = MaterialTheme.colors.primary
-            )
+            if (it != stringResource(id = R.string.saved)) {
+                Text(
+                    stringResource(id = R.string.category, it),
+                    style = MaterialTheme.typography.h5,
+                    color = MaterialTheme.colors.primary
+                )
+            } else {
+                Text(
+                    stringResource(id = R.string.saved_meals),
+                    style = MaterialTheme.typography.h5,
+                    color = MaterialTheme.colors.primary
+                )
+            }
         }
 
         Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.d3)))

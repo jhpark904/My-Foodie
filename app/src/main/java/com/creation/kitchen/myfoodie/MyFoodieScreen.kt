@@ -21,7 +21,6 @@ import com.creation.kitchen.myfoodie.ui.*
 enum class MyFoodieScreen(@StringRes val title: Int) {
     Home(R.string.app_name),
     Discover(R.string.discover_foods),
-    MyFood(R.string.my_foods),
     Meals(R.string.meals),
     MealDetails(R.string.meal_details)
 }
@@ -77,12 +76,15 @@ fun MyFoodieApp(
             modifier = Modifier.padding(innerPadding),
         ) {
             composable(route = MyFoodieScreen.Home.name) {
+                val category = stringResource(id = R.string.saved)
                 HomeScreen(
                     onDiscoverClick = {
                         navController.navigate(MyFoodieScreen.Discover.name)
                     },
                     onSearchClick = {
-                        navController.navigate(MyFoodieScreen.MyFood.name)
+                        navController.navigate(
+                            "${MyFoodieScreen.Meals.name}/${category}"
+                        )
                     }
                 )
             }
@@ -99,13 +101,9 @@ fun MyFoodieApp(
                 )
             }
 
-            composable(route = MyFoodieScreen.MyFood.name) {
-                SearchScree()
-            }
-
             composable(route = "${MyFoodieScreen.Meals.name}/{category}") {
                 val category = it.arguments?.getString("category")
-                val mealsViewModel: MealsViewModel = viewModel()
+                val mealsViewModel: MealsViewModel = viewModel(factory = MealsViewModel.Factory)
 
                 MealsScreen(
                     viewModel = mealsViewModel,

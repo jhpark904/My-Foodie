@@ -2,7 +2,6 @@
     <string name="app_name">My Foodie</string>
     <string name="image_of_chicken">Image of Chicken</string>
     <string name="discover_foods">Discover Foods</string>
-    <string name="search_foods">Search Foods</string>
     <string name="categories">Categories</string>
     <string name="category">Category: %s</string>
     <string name="loading">Loading...</string>
@@ -17,4 +16,7 @@
     <string name="remove">Remove</string>
     <string name="save_meal">Saved the Meal!</string>
     <string name="remove_meal">Removed the Meal!</string>
+    <string name="saved">saved</string>
+    <string name="saved_meals">Saved Meals</string>
+    <string name="my_meals">My Meals</string>
 </resources>

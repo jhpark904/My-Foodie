@@ -2,7 +2,7 @@ package com.creation.kitchen.myfoodie.repository
 
 import com.creation.kitchen.myfoodie.database.DatabaseMeal
 import com.creation.kitchen.myfoodie.database.MealDatabase
-
+import com.creation.kitchen.myfoodie.database.asMealList
 
 class MealRepository(
     private val database: MealDatabase

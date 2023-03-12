@@ -14,10 +14,10 @@ interface MealDao {
     fun isSaved(id: String): Flow<Boolean>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(meal: DatabaseMeal)
+    suspend fun insert(meal: DatabaseMeal)
 
     @Delete
-    fun delete(meal: DatabaseMeal)
+    suspend fun delete(meal: DatabaseMeal)
 }
 
 @Database(entities = [DatabaseMeal::class], version = 1)

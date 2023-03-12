@@ -53,7 +53,7 @@ fun HomeScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = stringResource(id = R.string.search_foods),
+                text = stringResource(id = R.string.saved_meals),
                 style = MaterialTheme.typography.button
             )
         }

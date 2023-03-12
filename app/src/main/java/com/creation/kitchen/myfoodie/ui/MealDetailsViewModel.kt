@@ -62,14 +62,14 @@ class MealDetailsViewModel(
     }
 
     fun saveMeal(meal: DatabaseMeal) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             mealRepository.saveMeal(meal)
             _showSaveToast.value = true
         }
     }
 
     fun removeMeal(meal: DatabaseMeal) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             mealRepository.removeMeal(meal)
             _showRemoveToast.value = true
         }
