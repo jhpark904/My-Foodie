@@ -10,17 +10,13 @@ An android application that lets users to search for meals based on categories a
 2. Set up anroid emulator (physical device can also be used)
 3. Hit the run button
 
-## Scope of Funtionality & Improvements Roadmap
+## Scope of Funtionality
 
 The application supports:
 
 - Searching for meals
 - Look up instructions on how to make the meals
 - Saving the meals 
-
-Improvements Roadmap:
-
-- More beautiful front-end
 
 ## Technologies Used
 - Kotlin
