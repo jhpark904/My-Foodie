@@ -5,7 +5,7 @@
 An android application that lets users to search for meals based on categories and lets them archive the meals
 
 ## Screenshots
-<img src="screenshots/meals.png"> <img src="screenshots/details.png">
+<img src="My-Foodie/app/src/main/java/com/creation/kitchen/myfoodie/screenshots"> <img src="My-Foodie/app/src/main/java/com/creation/kitchen/myfoodie/screenshots">
 
 ## How to Run
 
