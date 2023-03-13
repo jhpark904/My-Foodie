@@ -4,6 +4,9 @@
 
 An android application that lets users to search for meals based on categories and lets them archive the meals
 
+## Screenshots
+<img src="screenshots/meals.png"> <img src="screenshots/details.png">
+
 ## How to Run
 
 1. Download Android Studio
