@@ -23,9 +23,11 @@ Improvements Roadmap:
 - More beautiful front-end
 
 ## Technologies Used
-
+- Kotlin
 - Jetpack Compose
 - MVVM & Repository pattern
+- Retrofit for rest API
+- Room for accessing the SQLite database
 
 ## License
 
